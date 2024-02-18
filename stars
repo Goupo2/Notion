@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Progress Bar</title>
+<style>
+  .progress-bar {
+    width: 200px;
+    height: 30px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .stars {
+    font-size: 24px;
+    color: gold;
+    line-height: 30px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar">
+  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+</div>
+
+</body>
+</html>

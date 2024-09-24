@@ -16,13 +16,13 @@
 #date {
     font-size: large;
     color: #d3d3d3; /* Light grey */
+    margin-bottom: 5px;
 }
 #clock {
     font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
     color: #d3d3d3; /* Light grey */
     text-align: center;
-    margin-top: 10px;
 }
 body {
     background-color: #000000; /* Black background */
@@ -30,8 +30,10 @@ body {
     </style>
 </head>
 <body>
-    <div id="lbl"></div>
-    <div id="clock"></div>
+    <div id="lbl">
+        <div id="date"></div>
+        <div id="clock"></div>
+    </div>
 </body>
 
 <script>
@@ -58,8 +60,8 @@ body {
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
-    document.getElementById('lbl').innerHTML =
-        greet += `<div id="date">  ${date}</div>`;
+    document.getElementById('lbl').innerHTML = greet;
+    document.getElementById('date').innerHTML = date;
 
     // Function to update the clock
     function updateClock() {

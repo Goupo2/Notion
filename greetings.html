@@ -5,32 +5,37 @@
 #lbl {
     font-family: cambria;
     font-size: 40px;
-    color: #c8c8c8;
+    color: #c8c8c8; /* Light grey */
     padding: 5px;
     border: 0px solid #ececec;
     text-align: center;
     line-height: 1.5;
-    height:85%;
+    height: 85%;
     border-radius: 25px;
 }
 #date {
     font-size: large;
+    color: #c8c8c8; /* Light grey */
 }
 #clock {
     font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
-    color: #c8c8c8;
+    color: #c8c8c8; /* Light grey */
     text-align: center;
     margin-top: 10px;
 }
 body {
-    background-color: #000000;
+    background-color: #000000; /* Black background */
 }
     </style>
 </head>
 <body>
-    <div id="lbl"></div>
-    <div id="clock"></div>
+    <!-- Moved the clock inside #lbl to align it under the greeting -->
+    <div id="lbl">
+        <div id="greeting"></div>
+        <div id="date"></div>
+        <div id="clock"></div>
+    </div>
 </body>
 
 <script>
@@ -57,8 +62,8 @@ body {
     else if (hrs >= 17 && hrs <= 24)
         greet = 'Good Evening  ';
 
-    document.getElementById('lbl').innerHTML =
-        greet += `<div id="date">  ${date}</div>`;
+    document.getElementById('greeting').innerHTML = greet;
+    document.getElementById('date').innerHTML = date;
 
     // Function to update the clock
     function updateClock() {

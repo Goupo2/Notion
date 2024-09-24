@@ -18,6 +18,14 @@
 #date{
     font-size:large;
 }
+
+#clock {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    color: #c8c8c8;
+    text-align: center;
+    margin-top: 10px;
+
 body{
     background-color: #000000;
 }
@@ -26,6 +34,7 @@ body{
 </head>
 <body>
     <div id="lbl"></div>
+    <div id="clock"></div>
 </body>
 
 <script>
@@ -55,5 +64,19 @@ body{
 
     document.getElementById('lbl').innerHTML =
         greet+=`<div id="date">  ${date}</div>`;
+
+    // Function to update the clock
+    function updateClock() {
+        var now = new Date();
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
+        var seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+    updateClock(); // Initialize the clock right away
+    
 </script> 
 </html>

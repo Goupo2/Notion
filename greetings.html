@@ -5,31 +5,28 @@
 #lbl {
     font-family: cambria;
     font-size: 40px;
-    color: #c8c8c8;
+    color: #d3d3d3; /* Light grey */
     padding: 5px;
     border: 0px solid #ececec;
     text-align: center;
     line-height: 1.5;
-    height:85%
+    height:85%;
     border-radius: 25px;
-
-
 }
-#date{
-    font-size:large;
+#date {
+    font-size: large;
+    color: #d3d3d3; /* Light grey */
 }
-
 #clock {
     font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
-    color: #c8c8c8;
+    color: #d3d3d3; /* Light grey */
     text-align: center;
     margin-top: 10px;
-
-body{
-    background-color: #000000;
 }
-        
+body {
+    background-color: #000000; /* Black background */
+}
     </style>
 </head>
 <body>
@@ -47,11 +44,10 @@ body{
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    
     var today = new Date();
     var hrs = today.getHours();
     var dayOfWeek = weekday[today.getDay()];
-    var date = dayOfWeek+" " + today.getDate() + "/" +(today.getMonth()+1) +'/'+today.getFullYear()  ;
+    var date = dayOfWeek + " " + today.getDate() + "/" + (today.getMonth() + 1) + '/' + today.getFullYear();
 
     var greet;
 
@@ -63,20 +59,24 @@ body{
         greet = 'Good Evening  ';
 
     document.getElementById('lbl').innerHTML =
-        greet+=`<div id="date">  ${date}</div>`;
+        greet += `<div id="date">  ${date}</div>`;
 
     // Function to update the clock
     function updateClock() {
         var now = new Date();
-        var hours = String(now.getHours()).padStart(2, '0');
+        var hours = now.getHours();
         var minutes = String(now.getMinutes()).padStart(2, '0');
         var seconds = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds;
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12;
+        hours = hours ? hours : 12; // 12-hour format, 0 becomes 12
+
+        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
     }
 
     // Update the clock every second
     setInterval(updateClock, 1000);
     updateClock(); // Initialize the clock right away
-    
 </script> 
 </html>

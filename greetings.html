@@ -5,7 +5,7 @@
 #lbl {
     font-family: cambria;
     font-size: 40px;
-    color: #d3d3d3; /* Light grey */
+    color: #c8c8c8;
     padding: 5px;
     border: 0px solid #ececec;
     text-align: center;
@@ -15,17 +15,16 @@
 }
 #date {
     font-size: large;
-    color: #d3d3d3; /* Light grey */
 }
 #clock {
     font-family: 'Courier New', Courier, monospace;
     font-size: 32px;
-    color: #d3d3d3; /* Light grey */
+    color: #c8c8c8;
     text-align: center;
-   
+    margin-top: 10px;
 }
 body {
-    background-color: #000000; /* Black background */
+    background-color: #000000;
 }
     </style>
 </head>
@@ -59,20 +58,15 @@ body {
         greet = 'Good Evening  ';
 
     document.getElementById('lbl').innerHTML =
-        greet += <div id="date">  ${date}</div>;
+        greet += `<div id="date">  ${date}</div>`;
 
     // Function to update the clock
     function updateClock() {
         var now = new Date();
-        var hours = now.getHours();
+        var hours = String(now.getHours()).padStart(2, '0');
         var minutes = String(now.getMinutes()).padStart(2, '0');
         var seconds = String(now.getSeconds()).padStart(2, '0');
-        var ampm = hours >= 12 ? 'PM' : 'AM';
-
-        hours = hours % 12;
-        hours = hours ? hours : 12; // 12-hour format, 0 becomes 12
-
-        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
+        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds;
     }
 
     // Update the clock every second

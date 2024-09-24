@@ -30,7 +30,6 @@ body {
     </style>
 </head>
 <body>
-    <!-- Moved the clock inside #lbl to align it under the greeting -->
     <div id="lbl">
         <div id="greeting"></div>
         <div id="date"></div>
@@ -65,13 +64,19 @@ body {
     document.getElementById('greeting').innerHTML = greet;
     document.getElementById('date').innerHTML = date;
 
-    // Function to update the clock
+    // Function to update the clock in AM/PM format
     function updateClock() {
         var now = new Date();
-        var hours = String(now.getHours()).padStart(2, '0');
+        var hours = now.getHours();
         var minutes = String(now.getMinutes()).padStart(2, '0');
         var seconds = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds;
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+
+        // Convert 24-hour format to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // Hour '0' should be '12'
+
+        document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds + " " + ampm;
     }
 
     // Update the clock every second
